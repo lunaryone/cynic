@@ -104,7 +104,7 @@ pub fn enum_derive_impl(
                 }
             }
 
-            ::cynic::define_into_argument_for_scalar!(#ident);
+            ::cynic::define_into_argument_coercions!(#ident);
         })
     } else {
         Err(syn::Error::new(

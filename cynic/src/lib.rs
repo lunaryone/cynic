@@ -158,7 +158,8 @@
 mod argument;
 mod field;
 mod id;
-mod into_argument;
+// TODO: Undo this pub at some point (maybe)
+pub mod into_argument;
 mod operation;
 mod result;
 mod scalar;
@@ -218,7 +219,7 @@ pub type SerializeError = Box<dyn std::error::Error>;
 /// This trait is generic over some TypeLock which is used to tie an Enum
 /// definition back into it's GraphQL enum.  Generally this will be some
 /// type generated in the GQL code.
-pub trait Enum<TypeLock>: Sized {
+pub trait Enum<TypeLock>: Sized + Send + SerializableArgument {
     fn select() -> SelectionSet<'static, Self, ()>;
 }
 

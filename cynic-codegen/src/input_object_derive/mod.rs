@@ -155,7 +155,7 @@ pub fn input_object_derive_impl(
             }
 
             // TODO: Figure out if this does what I want...
-            ::cynic::define_into_argument_for_scalar!(#ident);
+            ::cynic::define_into_argument_coercions!(#ident);
         })
     } else {
         Err(syn::Error::new(
